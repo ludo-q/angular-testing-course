@@ -8,7 +8,7 @@ describe('CoursesService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule]
+            imports: [HttpClientTestingModule],
             providers: [
                 CoursesService
             ]
