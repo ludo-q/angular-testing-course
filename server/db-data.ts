@@ -58,7 +58,7 @@ export const COURSES: any = {
     id: 1,
     titles: {
       description: 'Serverless Angular with Firebase Course',
-      longDescription: 'Serveless Angular with Firestore, Firebase Storage & Hosting, Firebase Cloud Functions & AngularFire'
+      longDescription: 'Serverless Angular with Firestore, Firebase Storage & Hosting, Firebase Cloud Functions & AngularFire'
     },
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/serverless-angular-small.png',
     lessonsCount: 10,
@@ -500,7 +500,7 @@ export const LESSONS = {
 
   44: {
     id: 44,
-    description: 'Settting up the Angular TestBed',
+    description: 'Setting up the Angular TestBed',
     'duration': '6:28',
     'seqNo': 5,
     courseId: 12
