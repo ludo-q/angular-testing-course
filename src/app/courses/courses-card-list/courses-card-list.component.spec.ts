@@ -1,18 +1,23 @@
-import {TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import { CoursesModule } from '../courses.module';
+import { CoursesCardListComponent } from './courses-card-list.component';
 
 
 describe('CoursesCardListComponent', () => {
+  let component: CoursesCardListComponent;
+  let fixture: ComponentFixture<CoursesCardListComponent>;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      
-    })
-  })
+      imports: [CoursesModule],
+    }).compileComponents().then(() => {
+      fixture = TestBed.createComponent(CoursesCardListComponent);
+      component = fixture.componentInstance;
+    }); 
+  }));
 
   it("should create the component", () => {
-
-   pending();
-
+    expect(component).toBeTruthy();
   });
 
 
@@ -22,13 +27,11 @@ describe('CoursesCardListComponent', () => {
 
   });
 
-
   it("should display the first course", () => {
 
-      pending();
+    pending();
 
   });
-
 
 });
 
