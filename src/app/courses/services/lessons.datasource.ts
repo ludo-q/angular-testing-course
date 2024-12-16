@@ -1,7 +1,7 @@
 
 
 
-import {CollectionViewer, DataSource} from "@angular/cdk/collections";
+import {DataSource} from "@angular/cdk/collections";
 import {Observable, BehaviorSubject, of} from "rxjs";
 import {Lesson} from "../model/lesson";
 import {CoursesService} from "./courses.service";
@@ -38,12 +38,12 @@ export class LessonsDataSource implements DataSource<Lesson> {
 
     }
 
-    connect(collectionViewer: CollectionViewer): Observable<Lesson[]> {
+    connect(): Observable<Lesson[]> {
         console.log("Connecting data source");
         return this.lessonsSubject.asObservable();
     }
 
-    disconnect(collectionViewer: CollectionViewer): void {
+    disconnect(): void {
         this.lessonsSubject.complete();
         this.loadingSubject.complete();
     }
