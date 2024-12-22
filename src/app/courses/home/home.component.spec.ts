@@ -1,25 +1,32 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesModule } from '../courses.module';
 import {HomeComponent} from './home.component';
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { CoursesService } from '../services/courses.service';
+import { DebugElement } from '@angular/core';
 
 describe('HomeComponent', () => {
+
+  let fixture: ComponentFixture<HomeComponent>;
   let component:HomeComponent;
+  let el: DebugElement
+
   beforeEach(waitForAsync(() => {
     const coursesServiceSpy = jasmine.createSpyObj('CoursesService', ['findAllCourses']);
-   TestBed.configureTestingModule({
-    imports:[
-      CoursesModule,
-      NoopAnimationsModule
-    ],
-    providers: [
-      {provide: CoursesService, useValue: coursesServiceSpy}
-    ]
-   }).compileComponents().then(() => {
-    const fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-   });
+    TestBed.configureTestingModule({
+      imports:[
+        CoursesModule,
+        NoopAnimationsModule
+      ],
+      providers: [
+        {provide: CoursesService, useValue: coursesServiceSpy}
+      ]
+    }).compileComponents()
+        .then(() => {
+          fixture = TestBed.createComponent(HomeComponent);
+          component = fixture.componentInstance;
+          el = fixture.debugElement;
+        });
   }));
 
   it("should create the component", () => {
