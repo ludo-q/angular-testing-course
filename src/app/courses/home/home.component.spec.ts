@@ -1,7 +1,7 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesModule } from '../courses.module';
 import {HomeComponent} from './home.component';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, waitForAsync } from '@angular/core/testing';
 import { CoursesService } from '../services/courses.service';
 import { DebugElement } from '@angular/core';
 import { setupCourses } from '../common/setup-test-data';
@@ -69,7 +69,7 @@ describe('HomeComponent', () => {
   });
 
 
-  it("should display advanced courses when tab clicked", (done: DoneFn) => {
+  it("should display advanced courses when tab clicked", fakeAsync(() => {
 
     coursesService.findAllCourses.and.returnValue(of(setupCourses()));
     
@@ -77,17 +77,13 @@ describe('HomeComponent', () => {
     const tabs = el.queryAll(By.css(".mat-mdc-tab"));
     click(tabs[1]);
     fixture.detectChanges();
+    
+    flush();
+    const cardTitles = el.queryAll(By.css(".mat-mdc-tab-body-active .mat-mdc-card-title"));
+    expect(cardTitles.length).toBeGreaterThan(0, "Could not find cards titles");
 
-    setTimeout(() => {
-      
-      const cardTitles = el.queryAll(By.css(".mat-mdc-tab-body-active .mat-mdc-card-title"));
-      expect(cardTitles.length).toBeGreaterThan(0, "Could not find cards titles");
-
-      expect(cardTitles[0].nativeElement.textContent).toContain("Angular Security Course");
-      done();
-    }, 500);
-  });
-
+    expect(cardTitles[0].nativeElement.textContent).toContain("Angular Security Course");
+  }));
 });
 
 
