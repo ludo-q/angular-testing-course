@@ -1,7 +1,7 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesModule } from '../courses.module';
 import {HomeComponent} from './home.component';
-import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
 import { CoursesService } from '../services/courses.service';
 import { DebugElement } from '@angular/core';
 import { setupCourses } from '../common/setup-test-data';
